@@ -27,11 +27,27 @@ namespace Template.Controllers
         // POST: LoginController/loginUser
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult loginUser(LoginModel model)
+        public ActionResult loginUser([FromForm] LoginModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    if(model.Email == "admin@gmail.com" && model.Password == "admin")
+                    {
+
+                    return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Email", "Invalid email or password.");
+                        return View("Index",model);
+                    }
+                }
+                else
+                {
+                    return View("Index", model);
+                }
             }
             catch
             {
