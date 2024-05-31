@@ -6,6 +6,8 @@ namespace Template.Controllers
 {
     public class LoginController : Controller
     {
+
+        
         // GET: LoginController
         public ActionResult Index()
         {
@@ -35,8 +37,8 @@ namespace Template.Controllers
                 {
                     if(model.Email == "admin@gmail.com" && model.Password == "admin")
                     {
-
-                    return RedirectToAction("Index", "Home");
+                        TempData["message"] = "Welcome, " + model.Email + "!";
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
