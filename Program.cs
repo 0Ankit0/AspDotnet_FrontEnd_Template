@@ -1,7 +1,17 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Template.Classes;
 
 //https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-8.0#order for info on middleware
 var builder = WebApplication.CreateBuilder(args);
+
+//Add authentication scheme to the application
+//check: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-8.0 for more details
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index";
+        options.AccessDeniedPath = "/Login/Index?accessDenied=true";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

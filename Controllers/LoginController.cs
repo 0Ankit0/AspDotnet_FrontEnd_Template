@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Template.Models;
 
 namespace Template.Controllers
@@ -7,10 +10,15 @@ namespace Template.Controllers
     public class LoginController : Controller
     {
 
-        
+
         // GET: LoginController
-        public ActionResult Index()
+        public IActionResult Index(string returnUrl = null)
         {
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                TempData["message"] = "You must be logged in to access this resource.";
+            }
+
             return View();
         }
 
@@ -29,7 +37,7 @@ namespace Template.Controllers
         // POST: LoginController/loginUser
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult loginUser([FromForm] LoginModel model)
+        public async Task<IActionResult> loginUser([FromForm] LoginModel model)
         {
             try
             {
@@ -38,6 +46,24 @@ namespace Template.Controllers
                     if(model.Email == "admin@gmail.com" && model.Password == "admin")
                     {
                         TempData["message"] = "Welcome, " + model.Email + "!";
+
+                        var claims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Name, model.Email),
+                            new Claim(ClaimTypes.Role, "Admin")
+                        };
+
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                        var authProperties = new AuthenticationProperties
+                        {
+                            IsPersistent = true
+                        };
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(claimsIdentity),
+                            authProperties);
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -55,6 +81,13 @@ namespace Template.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: LoginController/Logout
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: LoginController/Edit/5

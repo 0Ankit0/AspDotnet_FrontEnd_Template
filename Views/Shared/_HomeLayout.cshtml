@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Template</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
-    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/HomeLayout.css" />
 </head>
 <body>
     <header>
@@ -22,19 +21,7 @@
             }
         }
     </header>
-    <aside>
-        @{
-            if (IsSectionDefined("Aside"))
-            {
-                @await RenderSectionAsync("Aside",
-                     required: false)
-            }
-            else
-            {
-               @await Html.PartialAsync("_Aside")
-            }
-        }
-    </aside>
+   
     <main>@RenderBody()</main>
     <footer>
         @{
