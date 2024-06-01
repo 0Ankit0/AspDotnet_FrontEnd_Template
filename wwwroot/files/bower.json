@@ -1,0 +1,13 @@
+{
+  "name": "YourProjectName",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "bootstrap": "^5.3.3"
+  },
+  "comments": {
+    "comment1": "use --save while installing bower components to save the dependencies in bower.json file",
+    "comment2": "ex. bower install jquery --save",
+    "comment3":"use bower update <packagename> to update the package to the latest version"
+  }
+}
