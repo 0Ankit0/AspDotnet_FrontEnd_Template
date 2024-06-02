@@ -1,8 +1,10 @@
+using Microsoft.Extensions.Caching.Memory;
+
 namespace Template.Classes{
      public interface IMemoryCache
     {
         T Get<T>(string key);
-        void Set<T>(string key, T value);
+        void Set<T>(string key, T value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null);
         void Remove(string key);
     } 
  public class MemoryCache : IMemoryCache
@@ -18,11 +20,10 @@ namespace Template.Classes{
         }
       public void Set<T>(string key, T value, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null)
         {
-            var options = new MemoryCacheEntryOptions()
-                .SetSlidingExpiration(slidingExpiration ?? TimeSpan.FromMinutes(2))
-                .SetAbsoluteExpiration(absoluteExpiration ?? DateTimeOffset.Now.AddMinutes(5));
+            slidingExpiration = slidingExpiration ?? TimeSpan.FromMinutes(2);
+            absoluteExpiration=absoluteExpiration??DateTimeOffset.Now.AddMinutes(2);
+            _memoryCache.Set(key, value, slidingExpiration,absoluteExpiration);
 
-            _memoryCache.Set(key, value, options);
         }
         public void Remove(string key)
         {
