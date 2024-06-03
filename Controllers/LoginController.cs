@@ -12,9 +12,9 @@ namespace Template.Controllers
 
 
         // GET: LoginController
-        public IActionResult Index(string returnUrl = null)
+        public IActionResult Index(string ReturnUrl = null)
         {
-            if (!string.IsNullOrEmpty(returnUrl))
+            if (!string.IsNullOrEmpty(ReturnUrl))
             {
                 TempData["message"] = "You must be logged in to access this resource.";
             }

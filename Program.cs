@@ -16,6 +16,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//Add imemoryCache 
+builder.Services.AddScoped<ICustomMemoryCache, MemoryCache>();
+
 //Add response caching to the application
 //check: https://docs.microsoft.com/en-us/aspnet/core/performance/caching/middleware?view=aspnetcore-8.0 for more details
 builder.Services.AddResponseCaching(options =>
