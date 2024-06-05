@@ -1,0 +1,77 @@
+﻿
+<input id="search-input" class="form-control" type="text" placeholder="Search for a location">
+<div id="map" style="height: 400px; width: 100%;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsu8XJg4qVTR66AYbUjhegV4jbbKwRA6U&libraries=places&callback=initMap" async defer></script>
+<script>
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 28.3949, lng: 84.1240 },
+            zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+            map: map
+        });
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.setCenter(initialLocation);
+            marker.setPosition(initialLocation);
+            marker.setVisible(true);
+
+        }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+
+        var input = document.getElementById('search-input');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        map.addListener('click', function(event) {
+            marker.setPosition(event.latLng);
+            marker.setVisible(true);
+        });
+
+        autocomplete.addListener('place_changed', function () {
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+
+            if (!place.geometry) {
+                window.alert("No details available for input: '" + place.name + "'");
+                return;
+            }
+
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);
+            }
+
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+        });
+
+        var geocoder = new google.maps.Geocoder;
+
+marker.addListener('position_changed', function() {
+    var position = marker.getPosition();
+    geocoder.geocode({'location': position, 'language': 'en'}, function(results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                input.value = results[0].formatted_address;
+                console.log("Address: " + results[0].formatted_address);
+                console.log("Latitude: " + position.lat());
+                console.log("Longitude: " + position.lng());
+            } else {
+                console.log('No results found');
+            }
+        } else {
+            console.log('Geocoder failed due to: ' + status);
+        }
+    });
+});
+    }
+</script>
