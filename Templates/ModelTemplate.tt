@@ -1,0 +1,9 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+namespace Template.Models
+{
+    public class <#= ClassName #>
+    {
+        public string TokenNo { get; set; }
+    }
+}
