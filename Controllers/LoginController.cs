@@ -57,6 +57,9 @@ namespace Template.Controllers
 
                         var authProperties = new AuthenticationProperties
                         {
+                            /*  If IsPersistent is set to true, the authentication cookie will persist even after the browser is closed. 
+                                If it's false, the authentication cookie will be deleted when the browser is closed.
+                                This is often used to implement "Remember Me" functionality in login forms.*/
                             IsPersistent = true
                         };
 

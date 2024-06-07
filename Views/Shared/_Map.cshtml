@@ -1,7 +1,8 @@
-﻿
+﻿@model string
+
 <input id="search-input" class="form-control" type="text" placeholder="Search for a location">
 <div id="map" style="height: 400px; width: 100%;"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsu8XJg4qVTR66AYbUjhegV4jbbKwRA6U&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=@Model&libraries=places&callback=initMap" async defer></script>
 <script>
 
     function initMap() {

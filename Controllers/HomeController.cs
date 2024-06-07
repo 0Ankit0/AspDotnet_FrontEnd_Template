@@ -10,17 +10,21 @@ namespace Template.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICustomMemoryCache _memory;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, ICustomMemoryCache memory)
+        public HomeController(ILogger<HomeController> logger, ICustomMemoryCache memory,IConfiguration config)
         {
             _logger = logger;
             _memory = memory;
+            _configuration = config;
         }
 
         [Authorize(Roles = "Admin,Manager")]//give access to only Admin and Manager
         //[Authorize]//give access to all authenticated users(login required)
         public IActionResult Index()
         {
+            var secretValue = _configuration["Google_Map_Api"];
+
             if(_memory.Get<string>("key") == null)
             {
                 _memory.Set("key", "From the Cache"); //basic cache example(will set default value for sliding and absolute expiry)
@@ -33,7 +37,7 @@ namespace Template.Controllers
             {
                 TempData["message"] = _memory.Get<string>("key");
             }
-
+            @ViewBag.SecretValue = secretValue;
             return View();
         }
 

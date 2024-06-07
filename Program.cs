@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Configuration;
 using Template.Classes;
+using Template.Models;
 
 //https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-8.0#order for info on middleware
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +42,9 @@ builder.Services.AddSingleton<IApiCall,Apicall>();
 // Add WebOptimizer to allow minification and bundling of CSS and JS files
 //check: https://github.com/ligershark/WebOptimizer?tab=readme-ov-file for more details
 builder.Services.AddWebOptimizer();
+
+//To add the api key from secrets.json file to configuration
+builder.Services.Configure<MySecretModel>(builder.Configuration.GetSection("Google_Map_Api"));
 
 var app = builder.Build();
 
