@@ -10,7 +10,6 @@
 }
 
 body {
-    background-color: wheat;
     min-height: 100svh;
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -83,19 +82,16 @@ header {
     font-size: var(--txt-body);
     flex-shrink: 0;
     flex-grow: 1;
-    background-color: red;
 }
 
 #nav-user-info {
     flex-basis: 100px;
     flex-shrink: 1;
     flex-grow: 0;
-    background-color: blue;
 }
 
 header {
     grid-area: header;
-    background-color: red;
 }
 
 aside {
@@ -105,7 +101,6 @@ aside {
 
 main {
     grid-area: main;
-    background-color: white;
 }
 
 footer {
