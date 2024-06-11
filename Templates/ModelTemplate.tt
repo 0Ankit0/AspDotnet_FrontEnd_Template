@@ -1,8 +1,11 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ output extension=".cs" #>
+
+<# string className = "CustomModel"; #>
+
 namespace Template.Models
 {
-    public class Model
+    public class <#= className #>
     {
         public string TokenNo { get; set; }
         public string GUID { get; set; }

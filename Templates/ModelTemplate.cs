@@ -1,6 +1,8 @@
-﻿namespace Template.Models
+﻿
+
+namespace Template.Models
 {
-    public class Model
+    public class CustomModel
     {
         public string TokenNo { get; set; }
         public string GUID { get; set; }
