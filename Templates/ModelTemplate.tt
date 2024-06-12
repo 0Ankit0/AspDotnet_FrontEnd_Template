@@ -1,13 +1,74 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
 <#@ output extension=".cs" #>
+<#
+    string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
+    string tableName = "Users";
 
-<# string className = "CustomModel"; #>
-
-namespace Template.Models
-{
-    public class <#= className #>
+     string GetCSharpType(string sqlType)
     {
-        public string TokenNo { get; set; }
-        public string GUID { get; set; }
+        switch (sqlType)
+        {
+            case "bigint": return "long";
+            case "binary": return "byte[]";
+            case "bit": return "bool";
+            case "char": return "string";
+            case "date": return "DateTime";
+            case "datetime": return "DateTime";
+            case "decimal": return "decimal";
+            case "float": return "double";
+            case "image": return "byte[]";
+            case "int": return "int";
+            case "money": return "decimal";
+            case "nchar": return "string";
+            case "ntext": return "string";
+            case "numeric": return "decimal";
+            case "nvarchar": return "string";
+            case "real": return "float";
+            case "smalldatetime": return "DateTime";
+            case "smallint": return "short";
+            case "smallmoney": return "decimal";
+            case "text": return "string";
+            case "timestamp": return "byte[]";
+            case "tinyint": return "byte";
+            case "varbinary": return "byte[]";
+            case "varchar": return "string";
+            default: return "object";
+        }
+    }
+
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+        using (SqlCommand command = new SqlCommand($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'", connection))
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+#>
+namespace Template.Models{
+    public class <#=tableName#>
+    {
+<#
+                while (reader.Read())
+                {
+                    string columnName = reader["COLUMN_NAME"].ToString();
+                    string sqlDataType = reader["DATA_TYPE"].ToString();
+                    string csharpDataType = GetCSharpType(sqlDataType);
+#>
+     public <#=csharpDataType#> <#=columnName#> { get; set; }
+<#
+                }
+#>
     }
 }
+<#
+            }
+        }
+    }
+#>
