@@ -105,7 +105,7 @@
 
   <ItemGroup>
     <None Update="Templates\ModelTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>

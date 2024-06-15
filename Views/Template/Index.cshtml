@@ -1,0 +1,29 @@
+﻿@model Template.Models.TemplateModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("Create", "Template", FormMethod.Post))
+{
+<div class="row m-4">
+    @Html.AntiForgeryToken()
+    <div  class="form-outline mb-4 col-md-5">
+        @Html.ValidationMessageFor(m => m.ConnectionString, "", new { @class = "text-danger" })
+        <!-- @Html.EditorFor(m => m.ConnectionString, new { htmlAttributes = new { @class = "form-control form-control-lg", @id = "ConnectionString" } }) -->
+            <input type="ConnectionString" name="ConnectionString" id="ConnectionString" class="form-control form-control-lg" value="Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True" />
+        <label class="form-label" for="ConnectionString">ConnectionString address</label>
+    </div>
+
+    <div data-mdb-input-init class="form-outline mb-4 col-md-5">
+        @Html.ValidationMessageFor(m => m.TableName, "", new { @class = "text-danger" })
+        <!-- @Html.EditorFor(m => m.TableName, new { htmlAttributes = new { @class = "form-control form-control-lg", @id = "TableName", @type = "TableName" } }) -->
+        <input type="TableName" name="TableName" id="TableName" class="form-control form-control-lg" />
+        <label class="form-label" for="TableName">TableName</label>
+    </div>
+
+    <div class="pt-1 mb-4 col-md-2">
+        <button class="btn btn-dark btn-lg btn-block" type="submit">Create</button>
+    </div>
+</div>
+}

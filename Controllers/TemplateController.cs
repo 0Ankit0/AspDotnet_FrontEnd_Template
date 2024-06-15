@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Template.Models;
+using Template.Templates;
 
 namespace Template.Controllers
 {
-    public class TemplateController1 : Controller
+    public class TemplateController : Controller
     {
         // GET: TemplateController1
         public ActionResult Index()
@@ -20,21 +24,27 @@ namespace Template.Controllers
         // GET: TemplateController1/Create
         public ActionResult Create()
         {
+          
             return View();
         }
 
         // POST: TemplateController1/Create
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([FromForm] TemplateModel tm)
         {
             try
             {
+                ModelTemplate model = new ModelTemplate(tm);
+                String page = model.TransformText();
+                System.IO.File.WriteAllText($"Models/{tm.TableName}.cs", page);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View("Index");
             }
         }
 

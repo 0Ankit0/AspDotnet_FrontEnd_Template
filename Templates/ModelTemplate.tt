@@ -1,15 +1,22 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿<#  //To create runtime template change the custom tool proterty of the template from
+// TextTemplatingFileGenerator to TextTemplatingFilePreprocessor
+//If there is some error with sqldataclient use 
+//"dotnet add package Microsoft.Data.SqlClient" to add the package
+#>
+
+<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Data" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Data" #>
-<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="Microsoft.Data.SqlClient" #>
 <#@ output extension=".cs" #>
 <#
-    string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
-    string tableName = "Users";
+    string connectionString = this.ConnectionString;
+   // string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
+    //string tableName = "Users";
+    string tableName = this.TableName;
 
      string GetCSharpType(string sqlType)
     {
