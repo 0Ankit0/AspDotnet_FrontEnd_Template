@@ -11,8 +11,8 @@
     <div  class="form-outline mb-4 col-md-5">
         @Html.ValidationMessageFor(m => m.ConnectionString, "", new { @class = "text-danger" })
         <!-- @Html.EditorFor(m => m.ConnectionString, new { htmlAttributes = new { @class = "form-control form-control-lg", @id = "ConnectionString" } }) -->
-            <input type="ConnectionString" name="ConnectionString" id="ConnectionString" class="form-control form-control-lg" value="Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True" />
-        <label class="form-label" for="ConnectionString">ConnectionString address</label>
+            <input type="ConnectionString" name="ConnectionString" id="ConnectionString" class="form-control form-control-lg" value="Server=Ankit\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True" />
+        <label class="form-label" for="ConnectionString">ConnectionString address(put single \ in server name)</label>
     </div>
 
     <div data-mdb-input-init class="form-outline mb-4 col-md-5">
