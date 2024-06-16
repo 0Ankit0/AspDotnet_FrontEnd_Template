@@ -32,6 +32,11 @@
     <Content Include="obj\Debug\net8.0\Template.sourcelink.json" />
     <Content Include="obj\project.assets.json" />
     <Content Include="obj\Template.csproj.nuget.dgspec.json" />
+    <Content Include="Templates\SelectColumnTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SelectColumnTemplate.tt</DependentUpon>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -101,12 +106,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ModelTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\SelectColumnTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SelectColumnTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Templates\ModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\SelectColumnTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SelectColumnTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

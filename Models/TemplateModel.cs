@@ -8,10 +8,17 @@ namespace Template.Models
 {
     public class TemplateModel
     {
-        [Required(ErrorMessage = "Connection String is required.")]
+       
         public string ConnectionString { get; set; }
-        [Required(ErrorMessage = "Table Name is required.")]
         public string TableName { get; set; }
+        public List<ColumnModel> Columns { get; set; }
+    }
+
+    public class ColumnModel
+    {
+        public string ColumnName { get; set; }
+        public string DataType { get; set; }
+        public bool Exclude { get; set; }
     }
 }
 namespace Template.Templates
@@ -20,6 +27,16 @@ namespace Template.Templates
     {
         private TemplateModel _model;
         public ModelTemplate(TemplateModel model)
+        {
+            _model = model;
+        }
+        public string TableName => _model.TableName;
+        public string ConnectionString => _model.ConnectionString;
+    }
+    public partial class SelectColumnTemplate
+    {
+        private TemplateModel _model;
+        public SelectColumnTemplate(TemplateModel model)
         {
             _model = model;
         }

@@ -1,0 +1,73 @@
+﻿<#  //To create runtime template change the custom tool proterty of the template from
+// TextTemplatingFileGenerator to TextTemplatingFilePreprocessor
+//If there is some error with sqldataclient use 
+//"dotnet add package Microsoft.Data.SqlClient" to add the package
+#>
+
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Data.SqlClient" #>
+<#@ output extension=".cshtml" #>
+<#
+    string connectionString = this.ConnectionString;
+    //string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
+    //string tableName = "Users";
+    string tableName = this.TableName;
+
+   
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+        using (SqlCommand command = new SqlCommand($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'", connection))
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+#>
+        @model Template.Models.TemplateModel
+        @using (Html.BeginForm("SelectColumns", "Template", FormMethod.Post))
+        {
+        <div class="formContainer">
+<#
+                int index = 0;
+                while (reader.Read())
+                {
+                    string columnName = reader["COLUMN_NAME"].ToString();
+                    string sqlDataType = reader["DATA_TYPE"].ToString();
+                    
+                    #>
+                     <div class="row">
+                        <div class="col-md-4">
+                            <label for="ColumnName">ColumnName</label>
+                            <input type="text" value="<#= columnName #>" class="form-control ColumnName" name="Columns[<#=index#>].ColumnName" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="DataType">DataType</label>
+                            <input type="text" value="<#= sqlDataType #>" class="form-control DataType" name="Columns[<#=index#>].DataType"  />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Exclude">Exclude From Model</label><br />
+                            <select name="Columns[<#= index #>].Exclude" class="form-control">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <#
+                    index++;
+
+                }
+#>
+        <input type="submit" value="Create" />
+        </div>
+
+        }
+<#
+            }
+        }
+    }
+#>
