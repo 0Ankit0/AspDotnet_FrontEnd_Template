@@ -8,7 +8,7 @@ namespace Template.Models
 {
     public class TemplateModel
     {
-       
+        public string ControllerName { get; set; }
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
         public List<ColumnModel> Columns { get; set; }
@@ -30,8 +30,9 @@ namespace Template.Templates
         {
             _model = model;
         }
-        public string TableName => _model.TableName;
-        public string ConnectionString => _model.ConnectionString;
+        public List<ColumnModel> Columns => _model.Columns;
+        public string ControllerName => _model.ControllerName;
+
     }
     public partial class SelectColumnTemplate
     {
@@ -42,5 +43,6 @@ namespace Template.Templates
         }
         public string TableName => _model.TableName;
         public string ConnectionString => _model.ConnectionString;
+
     }
 }

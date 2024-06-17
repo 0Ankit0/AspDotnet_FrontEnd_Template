@@ -12,7 +12,6 @@ namespace Template.Templates
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
-    using Microsoft.Data.SqlClient;
     using System;
     
     /// <summary>
@@ -41,13 +40,9 @@ namespace Template.Templates
             #line hidden
             this.Write("\r\n");
             
-            #line 15 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            #line 13 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
 
-    string connectionString = this.ConnectionString;
-   // string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
-    //string tableName = "Users";
-    string tableName = this.TableName;
-
+ 
      string GetCSharpType(string sqlType)
     {
         switch (sqlType)
@@ -80,32 +75,31 @@ namespace Template.Templates
         }
     }
 
-    using (SqlConnection connection = new SqlConnection(connectionString))
-    {
-        connection.Open();
-        using (SqlCommand command = new SqlCommand($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'", connection))
-        {
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-
+    
             
             #line default
             #line hidden
             this.Write("namespace Template.Models{\r\n    public class ");
             
-            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            #line 49 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n");
+            this.Write("Model\r\n    {\r\n    ");
             
-            #line 64 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            #line 51 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+ foreach (var column in this.Columns) { 
+            
+            #line default
+            #line hidden
+            
+            #line 52 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
 
-                while (reader.Read())
-                {
-                    string columnName = reader["COLUMN_NAME"].ToString();
-                    string sqlDataType = reader["DATA_TYPE"].ToString();
+               if(!column.Exclude){
+
+                    string columnName = column.ColumnName;
+                    string sqlDataType = column.DataType;
                     string csharpDataType = GetCSharpType(sqlDataType);
 
             
@@ -113,38 +107,30 @@ namespace Template.Templates
             #line hidden
             this.Write("     public ");
             
-            #line 71 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            #line 59 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(csharpDataType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 71 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            #line 59 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 72 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
+            #line 60 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
 
-                }
-
-            
-            #line default
-            #line hidden
-            this.Write("    }\r\n}\r\n");
-            
-            #line 77 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ModelTemplate.tt"
-
-            }
-        }
-    }
+          }
+          }
+                
 
             
             #line default
             #line hidden
+            this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;

@@ -6,18 +6,12 @@
 
 <#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="System.Data" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Microsoft.Data.SqlClient" #>
 <#@ output extension=".cs" #>
 <#
-    string connectionString = this.ConnectionString;
-   // string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
-    //string tableName = "Users";
-    string tableName = this.TableName;
-
+ 
      string GetCSharpType(string sqlType)
     {
         switch (sqlType)
@@ -50,32 +44,24 @@
         }
     }
 
-    using (SqlConnection connection = new SqlConnection(connectionString))
-    {
-        connection.Open();
-        using (SqlCommand command = new SqlCommand($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'", connection))
-        {
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-#>
+    #>
 namespace Template.Models{
-    public class <#=tableName#>
+    public class <#=this.ControllerName#>Model
     {
+    <# foreach (var column in this.Columns) { #>
 <#
-                while (reader.Read())
-                {
-                    string columnName = reader["COLUMN_NAME"].ToString();
-                    string sqlDataType = reader["DATA_TYPE"].ToString();
+               if(!column.Exclude){
+
+                    string columnName = column.ColumnName;
+                    string sqlDataType = column.DataType;
                     string csharpDataType = GetCSharpType(sqlDataType);
 #>
      public <#=csharpDataType#> <#=columnName#> { get; set; }
 <#
-                }
+          }
+          }
+                
 #>
     }
 }
-<#
-            }
-        }
-    }
-#>
+

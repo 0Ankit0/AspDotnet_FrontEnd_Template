@@ -36,20 +36,17 @@ namespace Template.Controllers
         {
             try
             {
-                if(tm.ConnectionString is null)
-                {
-                    ModelState.AddModelError("ConnectionString", "Invalid Connection String or connection String is empty.");
-                    return View("Index", tm);
-                }
-                if (tm.TableName is null)
-                {
-                    ModelState.AddModelError("TableName", "Invalid Table Name or Table Name is empty.");
-                    return View("Index", tm);
-                }
-                //ModelTemplate model = new ModelTemplate(tm);
-                //String page = model.TransformText();
-                //System.IO.File.WriteAllText($"Models/{tm.TableName}.cs", page);
-
+                //if(tm.ConnectionString is null)
+                //{
+                //    ModelState.AddModelError("ConnectionString", "Invalid Connection String or connection String is empty.");
+                //    return View("Index", tm);
+                //}
+                //if (tm.TableName is null)
+                //{
+                //    ModelState.AddModelError("TableName", "Invalid Table Name or Table Name is empty.");
+                //    return View("Index", tm);
+                //}
+                
                 SelectColumnTemplate selectColumn = new SelectColumnTemplate(tm);
                 String selectColumnPage = selectColumn.TransformText();
                 //ViewBag.SelectColumnPage = selectColumnPage;
@@ -65,11 +62,15 @@ namespace Template.Controllers
         // GET: TemplateController1/Edit/5
         public ActionResult Edit(int id)
         {
+            
             return View();
         }
         [HttpPost]
           public ActionResult SelectColumns([FromForm] TemplateModel tm)
         {
+            ModelTemplate model = new ModelTemplate(tm);
+            String page = model.TransformText();
+            System.IO.File.WriteAllText($"Models/{tm.ControllerName}.cs", page);
 
             return View("Index");
         }

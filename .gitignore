@@ -6,6 +6,7 @@
 #add the bower components
 bower_components/
 
+Shared/_PartialTemplate.cshtml
 # User-specific files
 *.rsuser
 *.suo

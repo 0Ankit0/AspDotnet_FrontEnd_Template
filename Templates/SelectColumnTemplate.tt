@@ -32,6 +32,10 @@
         @using (Html.BeginForm("SelectColumns", "Template", FormMethod.Post))
         {
         <div class="formContainer">
+         <div class="col-md-4">
+                            <label for="ColumnName">ControllerName</label>
+                            <input type="text" class="form-control ControllerName" name="ControllerName" />
+                        </div>
 <#
                 int index = 0;
                 while (reader.Read())
