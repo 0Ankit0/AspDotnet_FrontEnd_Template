@@ -1,5 +1,7 @@
-﻿@model StringHtmlContent
-
+﻿@model Template.Models.TemplateModel
+        @using (Html.BeginForm("SelectColumns", "Template", FormMethod.Post))
+        {
 <div class="m-4">
-    @await Html.PartialAsync("_PartialTemplate")
+        @Html.Raw(ViewBag.SelectColumnPage)
 </div>
+        }

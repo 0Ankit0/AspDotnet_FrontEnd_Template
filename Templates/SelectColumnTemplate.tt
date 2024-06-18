@@ -28,9 +28,7 @@
             using (SqlDataReader reader = command.ExecuteReader())
             {
 #>
-        @model Template.Models.TemplateModel
-        @using (Html.BeginForm("SelectColumns", "Template", FormMethod.Post))
-        {
+        
         <div class="formContainer">
          <div class="col-md-4">
                             <label for="ColumnName">ControllerName</label>
@@ -69,7 +67,7 @@
         <input type="submit" value="Create" />
         </div>
 
-        }
+        
 <#
             }
         }

@@ -49,8 +49,8 @@ namespace Template.Controllers
                 
                 SelectColumnTemplate selectColumn = new SelectColumnTemplate(tm);
                 String selectColumnPage = selectColumn.TransformText();
-                //ViewBag.SelectColumnPage = selectColumnPage;
-                 System.IO.File.WriteAllText($"Views/Shared/_PartialTemplate.cshtml", selectColumnPage);
+                ViewBag.SelectColumnPage = selectColumnPage;
+                 //System.IO.File.WriteAllText($"Views/Shared/_PartialTemplate.cshtml", selectColumnPage);
                 return View("SelectColumnPage");
             }
             catch
