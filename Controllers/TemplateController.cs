@@ -70,7 +70,7 @@ namespace Template.Controllers
         {
             ModelTemplate model = new ModelTemplate(tm);
             String page = model.TransformText();
-            System.IO.File.WriteAllText($"Models/{tm.ControllerName}.cs", page);
+            System.IO.File.WriteAllText($"{tm.ControllerPath}{tm.ControllerName}.cs", page);
 
             return View("Index");
         }

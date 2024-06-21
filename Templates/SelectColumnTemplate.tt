@@ -30,9 +30,17 @@
 #>
         
         <div class="formContainer">
-         <div class="col-md-4">
-                            <label for="ColumnName">ControllerName</label>
+                        <div class="col-md-4">
+                            <label for="ControllerName">Controller/Model Name</label>
                             <input type="text" class="form-control ControllerName" name="ControllerName" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ControllerPath">ControllerPath</label>
+                            <input type="text" class="form-control ControllerPath" name="ControllerPath" value="Controllers/" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ModelPath">ModelPath</label>
+                            <input type="text" class="form-control ModelPath" name="ModelPath" value="Models/" />
                         </div>
 <#
                 int index = 0;

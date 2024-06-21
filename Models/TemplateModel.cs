@@ -9,6 +9,8 @@ namespace Template.Models
     public class TemplateModel
     {
         public string ControllerName { get; set; }
+        public string ControllerPath { get; set; }
+        public string ModelPath { get; set; }
         public string ConnectionString { get; set; }
         public string TableName { get; set; }
         public List<ColumnModel> Columns { get; set; }
