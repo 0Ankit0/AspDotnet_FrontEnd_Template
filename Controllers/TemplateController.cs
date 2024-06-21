@@ -9,26 +9,26 @@ namespace Template.Controllers
 {
     public class TemplateController : Controller
     {
-        // GET: TemplateController1
+        // GET: TemplateController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: TemplateController1/Details/5
+        // GET: TemplateController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: TemplateController1/Create
+        // GET: TemplateController/Create
         public ActionResult Create()
         {
           
             return View();
         }
 
-        // POST: TemplateController1/Create
+        // POST: TemplateController/Create
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -59,7 +59,7 @@ namespace Template.Controllers
             }
         }
 
-        // GET: TemplateController1/Edit/5
+        // GET: TemplateController/Edit/5
         public ActionResult Edit(int id)
         {
             
@@ -81,7 +81,7 @@ namespace Template.Controllers
             return View();
         }
 
-        // POST: TemplateController1/Edit/5
+        // POST: TemplateController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -96,13 +96,13 @@ namespace Template.Controllers
             }
         }
 
-        // GET: TemplateController1/Delete/5
+        // GET: TemplateController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: TemplateController1/Delete/5
+        // POST: TemplateController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

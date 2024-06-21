@@ -60,11 +60,13 @@
                             <input type="text" value="<#= sqlDataType #>" class="form-control DataType" name="Columns[<#=index#>].DataType"  />
                         </div>
                         <div class="col-md-4">
-                            <label for="Exclude">Exclude From Model</label><br />
-                            <select name="Columns[<#= index #>].Exclude" class="form-control">
-                                <option value="false">No</option>
-                                <option value="true">Yes</option>
-                            </select>
+                            <label>Exclude From Model</label><br />
+                            <label>
+                                <input type="radio" name="Columns[<#= index #>].Exclude" value="false" checked /> No
+                            </label>
+                            <label>
+                                <input type="radio" name="Columns[<#= index #>].Exclude" value="true" /> Yes
+                            </label>
                         </div>
                     </div>
                     <#

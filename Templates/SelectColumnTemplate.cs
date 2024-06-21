@@ -121,24 +121,31 @@ namespace Template.Templates
             
             #line default
             #line hidden
-            this.Write("].DataType\"  />\r\n                        </div>\r\n                        <div cla" +
-                    "ss=\"col-md-4\">\r\n                            <label for=\"Exclude\">Exclude From Mo" +
-                    "del</label><br />\r\n                            <select name=\"Columns[");
+            this.Write(@"].DataType""  />
+                        </div>
+                        <div class=""col-md-4"">
+                            <label>Exclude From Model</label><br />
+                            <label>
+                                <input type=""radio"" name=""Columns[");
             
-            #line 64 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 65 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(index));
             
             #line default
             #line hidden
-            this.Write(@"].Exclude"" class=""form-control"">
-                                <option value=""false"">No</option>
-                                <option value=""true"">Yes</option>
-                            </select>
-                        </div>
-                    </div>
-                    ");
+            this.Write("].Exclude\" value=\"false\" checked /> No\r\n                            </label>\r\n   " +
+                    "                         <label>\r\n                                <input type=\"r" +
+                    "adio\" name=\"Columns[");
             
-            #line 70 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 68 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(index));
+            
+            #line default
+            #line hidden
+            this.Write("].Exclude\" value=\"true\" /> Yes\r\n                            </label>\r\n           " +
+                    "             </div>\r\n                    </div>\r\n                    ");
+            
+            #line 72 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
                     index++;
 
@@ -149,7 +156,7 @@ namespace Template.Templates
             #line hidden
             this.Write("        <input type=\"submit\" value=\"Create\" />\r\n        </div>\r\n\r\n        \r\n");
             
-            #line 79 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 81 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
             }
         }
