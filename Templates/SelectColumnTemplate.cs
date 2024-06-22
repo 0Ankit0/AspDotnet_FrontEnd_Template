@@ -63,6 +63,7 @@ namespace Template.Templates
             #line hidden
             this.Write(@"        
         <div class=""formContainer"">
+                <div class=""row"">
                         <div class=""col-md-4"">
                             <label for=""ControllerName"">Controller/Model Name</label>
                             <input type=""text"" class=""form-control ControllerName"" name=""ControllerName"" />
@@ -75,9 +76,10 @@ namespace Template.Templates
                             <label for=""ModelPath"">ModelPath</label>
                             <input type=""text"" class=""form-control ModelPath"" name=""ModelPath"" value=""Models/"" />
                         </div>
+                </div>
 ");
             
-            #line 45 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 47 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
                 int index = 0;
                 while (reader.Read())
@@ -93,14 +95,14 @@ namespace Template.Templates
                     "d-4\">\r\n                            <label for=\"ColumnName\">ColumnName</label>\r\n " +
                     "                           <input type=\"text\" value=\"");
             
-            #line 56 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
             
             #line default
             #line hidden
             this.Write("\" class=\"form-control ColumnName\" name=\"Columns[");
             
-            #line 56 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(index));
             
             #line default
@@ -109,14 +111,14 @@ namespace Template.Templates
                     "ass=\"col-md-4\">\r\n                            <label for=\"DataType\">DataType</lab" +
                     "el>\r\n                            <input type=\"text\" value=\"");
             
-            #line 60 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sqlDataType));
             
             #line default
             #line hidden
             this.Write("\" class=\"form-control DataType\" name=\"Columns[");
             
-            #line 60 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(index));
             
             #line default
@@ -128,7 +130,7 @@ namespace Template.Templates
                             <label>
                                 <input type=""radio"" name=""Columns[");
             
-            #line 65 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 67 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(index));
             
             #line default
@@ -137,7 +139,7 @@ namespace Template.Templates
                     "                         <label>\r\n                                <input type=\"r" +
                     "adio\" name=\"Columns[");
             
-            #line 68 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 70 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(index));
             
             #line default
@@ -145,7 +147,7 @@ namespace Template.Templates
             this.Write("].Exclude\" value=\"true\" /> Yes\r\n                            </label>\r\n           " +
                     "             </div>\r\n                    </div>\r\n                    ");
             
-            #line 72 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 74 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
                     index++;
 
@@ -156,7 +158,7 @@ namespace Template.Templates
             #line hidden
             this.Write("        <input type=\"submit\" value=\"Create\" />\r\n        </div>\r\n\r\n        \r\n");
             
-            #line 81 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
             }
         }

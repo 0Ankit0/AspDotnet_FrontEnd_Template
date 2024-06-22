@@ -30,6 +30,7 @@
 #>
         
         <div class="formContainer">
+                <div class="row">
                         <div class="col-md-4">
                             <label for="ControllerName">Controller/Model Name</label>
                             <input type="text" class="form-control ControllerName" name="ControllerName" />
@@ -42,6 +43,7 @@
                             <label for="ModelPath">ModelPath</label>
                             <input type="text" class="form-control ModelPath" name="ModelPath" value="Models/" />
                         </div>
+                </div>
 <#
                 int index = 0;
                 while (reader.Read())

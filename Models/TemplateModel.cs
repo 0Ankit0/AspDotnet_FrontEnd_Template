@@ -47,4 +47,16 @@ namespace Template.Templates
         public string ConnectionString => _model.ConnectionString;
 
     }
+
+    public partial class ControllerTemplate
+    {
+        private TemplateModel _model;
+        public ControllerTemplate(TemplateModel model)
+        {
+            _model = model;
+        }
+        public List<ColumnModel> Columns => _model.Columns;
+        public string ControllerName => _model.ControllerName;
+
+    }
 }

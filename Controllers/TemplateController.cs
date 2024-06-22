@@ -58,7 +58,7 @@ namespace Template.Controllers
                 return View("Index");
             }
         }
-
+        [HttpGet]
         // GET: TemplateController/Edit/5
         public ActionResult Edit(int id)
         {
@@ -70,8 +70,13 @@ namespace Template.Controllers
         {
             ModelTemplate model = new ModelTemplate(tm);
             String page = model.TransformText();
-            System.IO.File.WriteAllText($"{tm.ControllerPath}{tm.ControllerName}.cs", page);
+            System.IO.File.WriteAllText($"{tm.ModelPath}{tm.ControllerName}.cs", page);
 
+            ControllerTemplate controller = new ControllerTemplate(tm);
+            String controllerPage = controller.TransformText();
+            System.IO.File.WriteAllText($"{tm.ControllerPath}{tm.ControllerName}Controller.cs", controllerPage);
+
+            ModelState.Clear();
             return View("Index");
         }
 
