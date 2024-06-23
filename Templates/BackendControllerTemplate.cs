@@ -11,18 +11,16 @@ namespace Template.Templates
 {
     using System.Linq;
     using System.Text;
-    using System.Data;
     using System.Collections.Generic;
-    using Microsoft.Data.SqlClient;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class SelectColumnTemplate : SelectColumnTemplateBase
+    public partial class BackendControllerTemplate : BackendControllerTemplateBase
     {
 #line hidden
         /// <summary>
@@ -31,7 +29,7 @@ namespace Template.Templates
         public virtual string TransformText()
         {
             
-            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
   //To create runtime template change the custom tool proterty of the template from
 // TextTemplatingFileGenerator to TextTemplatingFilePreprocessor
 //If there is some error with sqldataclient use 
@@ -41,134 +39,185 @@ namespace Template.Templates
             #line default
             #line hidden
             this.Write("\r\n");
-            
-            #line 16 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            this.Write(@"
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Template.Models;
+using Template.Templates;
+using System;
+using System.Collections.Generic;
+using Microsoft.Data.SqlClient;
 
-    string connectionString = this.ConnectionString;
-    //string connectionString = "Server=Ankit\\SQLEXPRESS; Database=ServiceApp; Trusted_Connection=True;TrustServerCertificate=True";
-    //string tableName = "Users";
-    string tableName = this.TableName;
+namespace Template.Controllers
+{
+    public class ");
+            
+            #line 26 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write("Controller : Controller\r\n    {\r\n      \r\n\r\n        [HttpGet]\r\n        public async" +
+                    " Task<IActionResult> Get([FromBody]");
+            
+            #line 31 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write("Model md)\r\n\t\t{\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\t\tSqlParameter[] param = { \r\n                   " +
+                    "     new SqlParameter(\"@TokenNo\", md.TokenNo)\r\n                    };\r\n\t\t\t\t\t//st" +
+                    "ring Response = await ApiCall.ApiCallWithObject(\"");
+            
+            #line 38 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write(@"/Get"", TokenNo, ""Get"");
+					return StatusCode(StatusCodes.Status200OK, Response);
+				
+			}
+			catch (Exception ex)
+			{
+				string Exception = ex.ToString();
+				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
+			}
+		}
 
-   
-    using (SqlConnection connection = new SqlConnection(connectionString))
-    {
-        connection.Open();
-        using (SqlCommand command = new SqlCommand($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'", connection))
-        {
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
+        [HttpGet]
+        public async Task<IActionResult> GetByID([FromBody]");
+            
+            #line 50 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write("Model md)\r\n\t\t{\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\t\tSqlParameter[] param = { \r\n                   " +
+                    "     new SqlParameter(\"@TokenNo\", md.TokenNo),\r\n\t\t\t\t\t\tnew SqlParameter(\"@GUID\", " +
+                    "md.GUID)\r\n                    };\r\n\t\t\t\t\t//string Response = await ApiCall.ApiCall" +
+                    "WithObject(\"");
+            
+            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write(@"/GetByID?id="" + id, TokenNo, ""Get"");
+					return StatusCode(StatusCodes.Status200OK, Response);
+				
+			}
+			catch (Exception ex)
+			{
+				string Exception = ex.ToString();
+				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
+			}
+		}
 
-            
-            #line default
-            #line hidden
-            this.Write(@"        
-        <div class=""formContainer"">
-                <div class=""row"">
-                        <div class=""col-md-4"">
-                            <label for=""ControllerName"">Controller/Model Name</label>
-                            <input type=""text"" class=""form-control ControllerName"" name=""ControllerName"" />
-                        </div>
-                        <div class=""col-md-4"">
-                            <label for=""ControllerPath"">ControllerPath</label>
-                            <input type=""text"" class=""form-control ControllerPath"" name=""ControllerPath"" value=""Controllers/"" />
-                        </div>
-                        <div class=""col-md-4"">
-                            <label for=""ModelPath"">ModelPath</label>
-                            <input type=""text"" class=""form-control ModelPath"" name=""ModelPath"" value=""Models/"" />
-                        </div>
-                </div>
-");
-            
-            #line 47 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+		
 
-                int index = 0;
-                while (reader.Read())
-                {
-                    string columnName = reader["COLUMN_NAME"].ToString();
-                    string sqlDataType = reader["DATA_TYPE"].ToString();
-                    
-                    
-            
-            #line default
-            #line hidden
-            this.Write("                     <div class=\"row\">\r\n                        <div class=\"col-m" +
-                    "d-4\">\r\n                            <label for=\"ColumnName\">ColumnName</label>\r\n " +
-                    "                           <input type=\"text\" value=\"");
-            
-            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
-            
-            #line default
-            #line hidden
-            this.Write("\" class=\"form-control ColumnName\" name=\"Columns[");
-            
-            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(index));
-            
-            #line default
-            #line hidden
-            this.Write("].ColumnName\" />\r\n                        </div>\r\n                        <div cl" +
-                    "ass=\"col-md-4\">\r\n                            <label for=\"DataType\">DataType</lab" +
-                    "el>\r\n                            <input type=\"text\" value=\"");
-            
-            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sqlDataType));
-            
-            #line default
-            #line hidden
-            this.Write("\" class=\"form-control DataType\" name=\"Columns[");
-            
-            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(index));
-            
-            #line default
-            #line hidden
-            this.Write(@"].DataType""  />
-                        </div>
-                        <div class=""col-md-4"">
-                            <label>Exclude From Model</label><br />
-                            <label>
-                                <input type=""radio"" name=""Columns[");
-            
-            #line 67 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(index));
-            
-            #line default
-            #line hidden
-            this.Write("].Exclude\" value=\"false\" checked /> No\r\n                            </label>\r\n   " +
-                    "                         <label>\r\n                                <input type=\"r" +
-                    "adio\" name=\"Columns[");
-            
-            #line 70 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(index));
-            
-            #line default
-            #line hidden
-            this.Write("].Exclude\" value=\"true\" /> Yes\r\n                            </label>\r\n           " +
-                    "             </div>\r\n                    </div>\r\n                    ");
-            
-            #line 74 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
 
-                    index++;
-
-                }
-
+        [HttpPost]
+        public async Task<IActionResult> InsertUpdate([FromBody]");
+            
+            #line 73 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
             #line hidden
-            this.Write("        <input type=\"submit\" name=\"ControllerType\" value=\"FrontEnd\"  />\r\n        " +
-                    "<input type=\"submit\" name=\"ControllerType\" value=\"BackEnd\"  />\r\n        </div>\r\n" +
-                    "\r\n        \r\n");
+            this.Write("Model md )\r\n        {\r\n            try{\r\n                string TokenNo = HttpCon" +
+                    "text.Session.GetString(\"TokenNo\");\r\n                \r\n                     SqlPa" +
+                    "rameter[] parm2 = { \r\n\t\t\t\t\t     ");
             
-            #line 84 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\SelectColumnTemplate.tt"
+            #line 79 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+ foreach (var column in this.Columns) { 
+            
+            #line default
+            #line hidden
+            
+            #line 80 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
 
+               if(!column.Exclude){
+			   
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\tnew SqlParameter(\"@");
+            
+            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("\", md.");
+            
+            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("),\r\n\t\t\t\t\t\t");
+            
+            #line 84 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+
+						}
+					}
+					
+            
+            #line default
+            #line hidden
+            this.Write("                       \r\n                    };\r\n                    //string Res" +
+                    "ponse = await ApiCall.ApiCallWithObject(\"");
+            
+            #line 90 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write(@"/Create"", md, ""Post"");
+                    return StatusCode(StatusCodes.Status200OK,Response);
+                
             }
-        }
-    }
+             catch (Exception ex)
+            {
+                string Exception = ex.ToString();
+                return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
+            }
+		}
 
+        [HttpDelete]
+		public async Task<IActionResult> Delete([FromBody]");
+            
+            #line 102 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
             #line hidden
+            this.Write("Model md)\r\n\t\t{\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\t\tSqlParameter[] param = { \r\n                   " +
+                    "     new SqlParameter(\"@TokenNo\", md.TokenNo),\r\n\t\t\t\t\t\tnew SqlParameter(\"@GUID\", " +
+                    "md.GUID)\r\n                    };\r\n\t\t\t\t\t//string Response = await ApiCall.ApiCall" +
+                    "WithObject(\"");
+            
+            #line 110 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write(@"/Delete?id="" + id, TokenNo, ""Delete"");
+					return StatusCode(StatusCodes.Status200OK, Response);
+				
+			}
+			catch (Exception ex)
+			{
+				string Exception = ex.ToString();
+				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
+			}
+		}
+		
+    }
+}");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
@@ -195,7 +244,7 @@ namespace Template.Templates
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class SelectColumnTemplateBase
+    public class BackendControllerTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

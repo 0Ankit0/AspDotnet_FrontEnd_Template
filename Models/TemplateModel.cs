@@ -9,6 +9,7 @@ namespace Template.Models
     public class TemplateModel
     {
         public string ControllerName { get; set; }
+        public string ControllerType { get; set; }
         public string ControllerPath { get; set; }
         public string ModelPath { get; set; }
         public string ConnectionString { get; set; }
@@ -52,6 +53,17 @@ namespace Template.Templates
     {
         private TemplateModel _model;
         public ControllerTemplate(TemplateModel model)
+        {
+            _model = model;
+        }
+        public List<ColumnModel> Columns => _model.Columns;
+        public string ControllerName => _model.ControllerName;
+
+    }
+    public partial class BackendControllerTemplate
+    {
+        private TemplateModel _model;
+        public BackendControllerTemplate(TemplateModel model)
         {
             _model = model;
         }
