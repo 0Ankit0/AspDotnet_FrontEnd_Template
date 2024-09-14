@@ -24,7 +24,7 @@ namespace Template.Models
         public bool Exclude { get; set; }
     }
 }
-namespace Template.Templates
+namespace Template.FRONTEND_TEMPLATE.Templates
 {
     public partial class ModelTemplate
     {

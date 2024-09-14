@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Template.FRONTEND_TEMPLATE.Templates;
 using Template.Models;
-using Template.Templates;
 
 namespace Template.Controllers
 {
