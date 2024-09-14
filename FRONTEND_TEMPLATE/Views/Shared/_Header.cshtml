@@ -1,0 +1,36 @@
+﻿@model string
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light border-bottom border-2" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container">
+            @if (Model == "Dashboard")
+            {
+                <div class="content-header">
+                    <a id="contentMenu" href="#" class="content-menu d-none d-lg-flex"><i data-feather="menu"></i></a>
+                    <a id="mobileMenu" href="#" class="content-menu d-lg-none"><i data-feather="menu"></i></a>
+                </div>
+            }
+            else
+            {
+                <a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" width="60" src="~/assets/images/logo.png" alt="logo" /></a>
+            }
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+            <div class="collapse navbar-collapse border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+                <div class="mx-auto pt-3 pt-lg-0 d-block d-lg-none d-xl-block">
+                    Home
+                </div>
+                <form class="d-flex mt-2 mt-lg-0 ms-lg-auto ms-xl-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="/Login/Logout" class="btn btn-light bg-white shadow-white text-danger" role="button"> <i class="fas fa-user me-2"></i>Logout</a>
+                    }
+                    else
+                    {
+                    <a href="/Login" class="btn btn-light bg-white shadow-white text-primary" role="button"> <i class="fas fa-user me-2"></i>Login</a>
+                        
+                    }
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>

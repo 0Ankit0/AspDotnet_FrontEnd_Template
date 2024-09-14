@@ -1,0 +1,122 @@
+﻿@using System.Security.Claims
+ @* @{
+     var name = Context.Session.GetString("name");
+     var role = Context.Session.GetString("role");
+ } *@
+<!DOCTYPE html>
+@* https://www.jqueryscript.net/menu/dashboard-sidebar-nav.html *@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @{
+        await Html.RenderPartialAsync("_LinkPartial");
+    }
+    <link href="~/dashnav/assets/css/style.min.css" rel="stylesheet" />
+	<link href="~/lib/remixicon/remixicon.min.css" rel="stylesheet" />
+</head>
+<body class="skin-base animate">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo"><span></span></a>
+            <a href="#" class="sidebar-logo-text">dash<span>nav</span></a>
+        </div><!-- sidebar-header -->
+        <div class="sidebar-search">
+            <div class="search-body">
+                <i data-feather="search"></i>
+                <input type="text" class="form-control" placeholder="Search...">
+            </div><!-- search-body -->
+        </div><!-- sidebar-search -->
+        <div class="sidebar-body pt-20">
+            <div class="nav-group show">
+                <div class="nav-group-label">Management</div>
+                <ul class="nav-sidebar">
+                    <li class="nav-item active">
+                        <a href="" class="nav-link with-sub"><i data-feather="package"></i><span>Dashboard</span></a>
+                        <nav class="nav-sub">
+                            <a href="" data-id="Overview" class="sub-link">Overview</a>
+                            <a href="" data-id="Insights" class="sub-link">Insights</a>
+                            <a href="" data-id="Transactions" class="sub-link">Transactions</a>
+                            <a href="" data-id="Reports" class="sub-link">Reports</a>
+                        </nav>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link with-sub"><i data-feather="monitor"></i><span>Site Analytics</span></a>
+                        <nav class="nav-sub">
+                            <a href="" data-id="Summary" class="sub-link">Summary</a>
+                            <a href="" data-id="Geolocation" class="sub-link">Geolocation</a>
+                            <a href="" data-id="Accounts" class="sub-link">Accounts</a>
+                        </nav>
+                    </li>
+                    <li class="nav-item"><a href="" class="nav-link"><i data-feather="shopping-bag"></i><span>Sales Monitoring</span></a></li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link with-sub"><i data-feather="file-text"></i><span>Documents</span></a>
+                        <nav class="nav-sub">
+                            <a href="" data-id="Updates" class="sub-link">Updates</a>
+                            <a href="" data-id="Promotions" class="sub-link">Promotions</a>
+                            <a href="" data-id="Articles" class="sub-link">Articles</a>
+                        </nav>
+                    </li>
+                    <li class="nav-item"><a href="" data-id="Calender" class="nav-link"><i data-feather="calendar"></i><span>Calendar</span></a></li>
+                    <li class="nav-item"><a href="" data-id="Customers" class="nav-link"><i data-feather="briefcase"></i><span>Customers</span></a></li>
+                </ul>
+            </div><!-- nav-group -->
+            <div class="nav-group">
+                <div class="nav-group-label">Accounts &amp; Settings</div>
+                <ul class="nav-sidebar">
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i data-feather="activity"></i><span>Activity Logs</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link with-sub"><i data-feather="settings"></i><span>Preferences</span></a>
+                        <nav class="nav-sub">
+                            <a href="" data-id="Language"  class="sub-link">Language</a>
+                            <a href="" data-id="Accessibility" class="sub-link">Accessibility</a>
+                        </nav>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link with-sub"><i data-feather="help-circle"></i><span>Help &amp; Support</span></a>
+                        <nav class="nav-sub">
+                            <a href="" data-id="ReportCenter" class="sub-link">Report Center</a>
+                            <a href="" data-id="ReportProblem" class="sub-link">Report a Problem</a>
+                            <a href="" data-id="faq" class="sub-link">FAQ</a>
+                        </nav>
+                    </li>
+                    <li class="nav-item"><a href="" data-id="feedback" class="nav-link"><i data-feather="edit-3"></i><span>Give Feedback</span></a></li>
+                </ul>
+            </div><!-- nav-group -->
+        </div><!-- sidebar-body -->
+        <div class="sidebar-footer">
+            <a href="" class="avatar online"><span class="avatar-initial">s</span></a>
+            <div class="avatar-body">
+                @if (User.Identity.IsAuthenticated)
+                        {
+                <div class="d-flex align-items-center justify-content-between">
+                        <h6> @* @name *@ @User?.Identity?.Name</h6>
+                    <a href="/Dashboard/Settings" class="footer-menu"><i class="ri-settings-4-line"></i></a>
+                </div>
+                    <span> @* @role *@ @User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value</span>
+                        }
+            </div><!-- avatar-body -->
+        </div><!-- sidebar-footer -->
+    </div><!-- sidebar -->
+
+    <div class="content">
+            @await Html.PartialAsync("_Header","Dashboard")
+        <div class="content-body">
+            @RenderBody()
+        </div>
+    </div>
+@*     <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script> *@
+    @{
+        await Html.RenderPartialAsync("_ScriptsPartial");
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/lib/feather-icons/feather.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/lib/feather-icons/feather.min.js"></script>
+    <script src="~/dashnav/assets/js/script.js"></script>
+        @await RenderSectionAsync("Scripts", required: false);
+</body>
+</html>

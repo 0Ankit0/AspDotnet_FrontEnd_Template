@@ -1,0 +1,241 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "moment.js@2.30.1",
+      "destination": "wwwroot/lib/moment.js/",
+      "files": [
+        "moment.min.js"
+      ]
+    },
+    {
+      "library": "aspnet-signalr@1.0.27",
+      "destination": "wwwroot/lib/aspnet-signalr/",
+      "files": [
+        "signalr.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net@2.1.2",
+      "destination": "wwwroot/lib/datatables.net/",
+      "files": [
+        "dataTables.min.js"
+      ]
+    },
+    {
+      "library": "leaflet@1.9.4",
+      "destination": "wwwroot/lib/leaflet/",
+      "files": [
+        "leaflet.min.js",
+        "leaflet.min.css"
+      ]
+    },
+    {
+      "library": "masonry@4.2.2",
+      "destination": "wwwroot/lib/masonry/",
+      "files": [
+        "masonry.pkgd.min.js"
+      ]
+    },
+    {
+      "library": "parsley.js@2.9.2",
+      "destination": "wwwroot/lib/parsley.js/",
+      "files": [
+        "parsley.min.js"
+      ]
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/lib/select2/",
+      "files": [
+        "js/select2.min.js",
+        "css/select2.min.css"
+      ]
+    },
+    {
+      "library": "jsbarcode@3.11.6",
+      "destination": "wwwroot/lib/jsbarcode/",
+      "files": [
+        "JsBarcode.all.min.js"
+      ]
+    },
+    {
+      "library": "jquery@3.7.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js"
+      ]
+    },
+    {
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "jquery-validate@1.21.0",
+      "destination": "wwwroot/lib/jquery-validate/",
+      "files": [
+        "jquery.validate.min.js"
+      ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "popper.js@2.11.8",
+      "destination": "wwwroot/lib/popper.js/",
+      "files": [
+        "umd/popper.min.js"
+      ]
+    },
+    {
+      "library": "tether@1.4.7",
+      "destination": "wwwroot/lib/tether/",
+      "files": [
+        "js/tether.min.js",
+        "css/tether.min.css"
+      ]
+    },
+    {
+      "library": "sweetalert2@11.12.3",
+      "destination": "wwwroot/lib/sweetalert2/",
+      "files": [
+        "sweetalert2.min.js",
+        "sweetalert2.min.css"
+      ]
+    },
+    {
+      "library": "Swiper@11.0.5",
+      "destination": "wwwroot/lib/Swiper/",
+      "files": [
+        "swiper-bundle.min.js",
+        "swiper-bundle.min.css"
+      ]
+    },
+    {
+      "library": "Sortable@1.15.2",
+      "destination": "wwwroot/lib/Sortable/",
+      "files": [
+        "Sortable.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-bs5@2.1.3",
+      "destination": "wwwroot/lib/datatables.net-bs5/",
+      "files": [
+        "dataTables.bootstrap5.min.js",
+        "dataTables.bootstrap5.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive@3.0.2",
+      "destination": "wwwroot/lib/datatables.net-responsive/",
+      "files": [
+        "dataTables.responsive.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive-bs5@3.0.2",
+      "destination": "wwwroot/lib/datatables.net-responsive-bs5/",
+      "files": [
+        "responsive.bootstrap5.min.js",
+        "responsive.bootstrap5.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-buttons-bs5@3.1.1",
+      "destination": "wwwroot/lib/datatables.net-buttons-bs5/",
+      "files": [
+        "buttons.bootstrap5.min.js",
+        "buttons.bootstrap5.min.css"
+      ]
+    },
+    {
+      "library": "font-awesome@6.6.0",
+      "destination": "wwwroot/lib/font-awesome/",
+      "files": [
+        "css/all.min.css",
+        "js/all.min.js",
+        "webfonts/fa-brands-400.ttf",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-regular-400.ttf",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.woff2",
+        "webfonts/fa-v4compatibility.ttf",
+        "webfonts/fa-v4compatibility.woff2"
+      ]
+    },
+    {
+      "library": "datatables.net-buttons@3.1.1",
+      "destination": "wwwroot/lib/datatables.net-buttons/",
+      "files": [
+        "js/dataTables.buttons.min.js",
+        "js/buttons.print.min.js",
+        "js/buttons.html5.min.js",
+        "js/buttons.colVis.min.js"
+      ]
+    },
+    {
+      "library": "jszip@3.10.1",
+      "destination": "wwwroot/lib/jszip/",
+      "files": [
+        "jszip.min.js"
+      ]
+    },
+    {
+      "library": "pdfmake@0.2.11",
+      "destination": "wwwroot/lib/pdfmake/",
+      "files": [
+        "pdfmake.min.js",
+        "vfs_fonts.min.js"
+      ]
+    },
+    {
+      "library": "cleave.js@1.6.0",
+      "destination": "wwwroot/lib/cleave.js/",
+      "files": [
+        "cleave.min.js",
+        "addons/cleave-phone.np.js"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "simple-notify@1.0.4",
+      "destination": "wwwroot/lib/simple-notify/",
+      "files": [
+        "dist/simple-notify.min.js",
+        "dist/simple-notify.css"
+      ]
+    },
+    {
+      "library": "feather-icons@4.29.2",
+      "destination": "wwwroot/lib/feather-icons/",
+      "files": [
+        "feather.min.js"
+      ]
+    },
+    {
+      "library": "perfect-scrollbar@1.5.5",
+      "destination": "wwwroot/lib/perfect-scrollbar/",
+      "files": [
+        "perfect-scrollbar.min.js",
+        "css/perfect-scrollbar.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "remixicon@4.2.0",
+      "destination": "wwwroot/lib/remixicon/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Chart.js@4.4.1",
+      "destination": "wwwroot/lib/Chart.js/",
+      "files": [
+        "chart.umd.min.js"
+      ]
+    }
+  ]
+}

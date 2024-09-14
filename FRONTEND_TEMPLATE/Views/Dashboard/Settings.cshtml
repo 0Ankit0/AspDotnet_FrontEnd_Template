@@ -1,0 +1,39 @@
+﻿@{
+	Layout = "_Dashboard";
+	ViewData["Title"] = "Settings Page";
+}
+
+<label class="content-label">Navigation Skins</label>
+<nav id="navigationSkins" class="nav">
+    <a href="" data-skin="base" class="nav-link active">Base</a>
+    <a href="" data-skin="blue" class="nav-link">Blue/White</a>
+    <a href="" data-skin="dark" class="nav-link">Dark</a>
+    <a href="" data-skin="red" class="nav-link">Red/Dark</a>
+    <a href="" data-skin="indigo" class="nav-link">White/Indigo</a>
+    <a href="" data-skin="gradient" class="nav-link">White/Gradient</a>
+</nav>
+
+<br>
+
+<label class="content-label">Navigation Styles</label>
+<nav id="navigationStyles" class="nav">
+    <a href="" data-style="base" class="nav-link active">Base</a>
+    <a href="" data-style="one" class="nav-link">Style 01</a>
+    <a href="" data-style="two" class="nav-link">Style 02</a>
+    <a href="" data-style="three" class="nav-link">Style 03</a>
+</nav>
+<img id="QRContainer" />
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '@Url.Action("GetQR", "Login")',
+                method: 'GET',
+                success: function (data) {
+                    $('#QRContainer').attr('src',data);
+                }
+            });
+        });
+    </script>
+}
+ @* @Html.ActionLink("Log Out", "Logout", "Login", null, new { @class = "btn btn-danger" }) *@

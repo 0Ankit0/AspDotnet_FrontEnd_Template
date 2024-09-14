@@ -80,7 +80,7 @@ namespace Template.Controllers
 <#
                if(!column.Exclude){
 			   #>
-						 new SqlParameter("@<#=column.ColumnName#>", md.<#=column.ColumnName#>),
+				new SqlParameter("@<#=column.ColumnName#>", md.<#=column.ColumnName#>),
 						<#
 						}
 					}

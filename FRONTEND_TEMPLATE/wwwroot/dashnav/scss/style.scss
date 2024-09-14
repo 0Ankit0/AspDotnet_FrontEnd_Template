@@ -1,0 +1,26 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap');
+
+// Variables & Mixins
+@import "variables";
+@import "mixins";
+
+// Bootstrap Framework
+@import "../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "../node_modules/bootstrap/scss/bootstrap-utilities";
+
+// Panels
+@import "sidebar";
+@import "content";
+
+// Skins
+@import "skins/base";
+@import "skins/blue";
+@import "skins/dark";
+@import "skins/red";
+@import "skins/indigo";
+@import "skins/gradient";
+
+// Interaction
+@import "animate";
+@import "scrollbar";
