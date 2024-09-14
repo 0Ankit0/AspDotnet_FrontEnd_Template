@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Template.Templates
+namespace Template.FRONTEND_TEMPLATE.Templates
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Template.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
+    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class ControllerTemplate : ControllerTemplateBase
+    public partial class ModelTemplate : ModelTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,7 +29,7 @@ namespace Template.Templates
         public virtual string TransformText()
         {
             
-            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
+            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
   //To create runtime template change the custom tool proterty of the template from
 // TextTemplatingFileGenerator to TextTemplatingFilePreprocessor
 //If there is some error with sqldataclient use 
@@ -39,203 +39,98 @@ namespace Template.Templates
             #line default
             #line hidden
             this.Write("\r\n");
-            this.Write(@"
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Template.Models;
-using Template.Templates;
-using System;
-using System.Collections.Generic;
-
-
-namespace Template.Controllers
-{
-    public class ");
             
-            #line 26 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"Controller : Controller
+            #line 13 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+
+ 
+     string GetCSharpType(string sqlType)
     {
-        [HttpGet]
-        public ActionResult Index()
+        switch (sqlType)
         {
-            
-            return View();
+            case "bigint": return "long";
+            case "binary": return "byte[]";
+            case "bit": return "bool";
+            case "char": return "string";
+            case "date": return "DateTime";
+            case "datetime": return "DateTime";
+            case "decimal": return "decimal";
+            case "float": return "double";
+            case "image": return "byte[]";
+            case "int": return "int";
+            case "money": return "decimal";
+            case "nchar": return "string";
+            case "ntext": return "string";
+            case "numeric": return "decimal";
+            case "nvarchar": return "string";
+            case "real": return "float";
+            case "smalldatetime": return "DateTime";
+            case "smallint": return "short";
+            case "smallmoney": return "decimal";
+            case "text": return "string";
+            case "timestamp": return "byte[]";
+            case "tinyint": return "byte";
+            case "varbinary": return "byte[]";
+            case "varchar": return "string";
+            default: return "object";
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-		{
-			try
-			{
-				string TokenNo = HttpContext.Session.GetString(""TokenNo"");
-				if (TokenNo == null)
-				{
-					return StatusCode(StatusCodes.Status504GatewayTimeout);
-				}
-				else
-				{
-					//string Response = await ApiCall.ApiCallWithObject(""");
-            
-            #line 47 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"/Get"", TokenNo, ""Get"");
-					return StatusCode(StatusCodes.Status200OK, Response);
-				}
-			}
-			catch (Exception ex)
-			{
-				string Exception = ex.ToString();
-				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
-			}
-		}
-
-        [HttpGet]
-        public async Task<IActionResult> GetByID(int id)
-		{
-			try
-			{
-				string TokenNo = HttpContext.Session.GetString(""TokenNo"");
-				if (TokenNo == null)
-				{
-					return StatusCode(StatusCodes.Status504GatewayTimeout);
-				}
-				else
-				{
-					//string Response = await ApiCall.ApiCallWithObject(""");
-            
-            #line 70 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"/GetByID?id="" + id, TokenNo, ""Get"");
-					return StatusCode(StatusCodes.Status200OK, Response);
-				}
-			}
-			catch (Exception ex)
-			{
-				string Exception = ex.ToString();
-				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
-			}
-		}
-
-		[HttpPut]
-		public async Task<IActionResult> Update([FromBody]");
-            
-            #line 82 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"Model md)
-		{
-			try{
-			   string TokenNo = HttpContext.Session.GetString(""TokenNo"");
-			   if (TokenNo == null)
-			   {
-			       return StatusCode(StatusCodes.Status504GatewayTimeout);
-				}
-				else
-				{
-				    md.TokenNo = TokenNo;
-					//string Response = await ApiCall.ApiCallWithObject(""");
-            
-            #line 93 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"/Update"", md, ""Put"");
-					return StatusCode(StatusCodes.Status200OK, Response);
-				}
-			}
-			catch (Exception ex)
-			{
-			    string Exception = ex.ToString();
-				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
-			}
-		}
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody]");
-            
-            #line 107 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"Model md )
-        {
-            try{
-                string TokenNo = HttpContext.Session.GetString(""TokenNo"");
-                if (TokenNo == null)
-                {
-                    return StatusCode(StatusCodes.Status504GatewayTimeout);
-                }
-                else
-                {
-                    md.TokenNo = TokenNo;
-                    //string Response = await ApiCall.ApiCallWithObject(""");
-            
-            #line 118 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"/Create"", md, ""Post"");
-                    return StatusCode(StatusCodes.Status200OK,Response);
-                }
-            }
-             catch (Exception ex)
-            {
-                string Exception = ex.ToString();
-                return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
-            }
-		}
-
-        [HttpDelete]
-		public async Task<IActionResult> Delete(int id)
-		{
-			try
-			{
-				string TokenNo = HttpContext.Session.GetString(""TokenNo"");
-				if (TokenNo == null)
-				{
-					return StatusCode(StatusCodes.Status504GatewayTimeout);
-				}
-				else
-				{
-					//string Response = await ApiCall.ApiCallWithObject(""");
-            
-            #line 141 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\ControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
-            
-            #line default
-            #line hidden
-            this.Write(@"/Delete?id="" + id, TokenNo, ""Delete"");
-					return StatusCode(StatusCodes.Status200OK, Response);
-				}
-			}
-			catch (Exception ex)
-			{
-				string Exception = ex.ToString();
-				return StatusCode(StatusCodes.Status417ExpectationFailed,Exception);
-			}
-		}
-		
     }
-}");
+
+    
+            
+            #line default
+            #line hidden
+            this.Write("namespace Template.Models{\r\n    public class ");
+            
+            #line 49 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
+            
+            #line default
+            #line hidden
+            this.Write("Model\r\n    {\r\n            public string TokenNo { get; set; } \r\n    ");
+            
+            #line 52 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+ foreach (var column in this.Columns) { 
+            
+            #line default
+            #line hidden
+            
+            #line 53 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+
+               if(!column.Exclude){
+
+                    string columnName = column.ColumnName;
+                    string sqlDataType = column.DataType;
+                    string csharpDataType = GetCSharpType(sqlDataType);
+
+            
+            #line default
+            #line hidden
+            this.Write("   \r\n             public ");
+            
+            #line 61 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(csharpDataType));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 61 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 62 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\ModelTemplate.tt"
+
+          }
+          }
+                
+
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
@@ -262,7 +157,7 @@ namespace Template.Controllers
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class ControllerTemplateBase
+    public class ModelTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

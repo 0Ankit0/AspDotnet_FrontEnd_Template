@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Template.Templates
+namespace Template.FRONTEND_TEMPLATE.Templates
 {
     using System.Linq;
     using System.Text;
@@ -18,7 +18,7 @@ namespace Template.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+    #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class BackendControllerTemplate : BackendControllerTemplateBase
     {
@@ -29,7 +29,7 @@ namespace Template.Templates
         public virtual string TransformText()
         {
             
-            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 1 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
   //To create runtime template change the custom tool proterty of the template from
 // TextTemplatingFileGenerator to TextTemplatingFilePreprocessor
 //If there is some error with sqldataclient use 
@@ -54,7 +54,7 @@ namespace Template.Controllers
 {
     public class ");
             
-            #line 26 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 26 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -62,7 +62,7 @@ namespace Template.Controllers
             this.Write("Controller : Controller\r\n    {\r\n      \r\n\r\n        [HttpGet]\r\n        public async" +
                     " Task<IActionResult> Get([FromBody]");
             
-            #line 31 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 31 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -71,7 +71,7 @@ namespace Template.Controllers
                     "     new SqlParameter(\"@TokenNo\", md.TokenNo)\r\n                    };\r\n\t\t\t\t\t//st" +
                     "ring Response = await ApiCall.ApiCallWithObject(\"");
             
-            #line 38 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 38 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -90,7 +90,7 @@ namespace Template.Controllers
         [HttpGet]
         public async Task<IActionResult> GetByID([FromBody]");
             
-            #line 50 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 50 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -100,7 +100,7 @@ namespace Template.Controllers
                     "md.GUID)\r\n                    };\r\n\t\t\t\t\t//string Response = await ApiCall.ApiCall" +
                     "WithObject(\"");
             
-            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 58 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -122,7 +122,7 @@ namespace Template.Controllers
         [HttpPost]
         public async Task<IActionResult> InsertUpdate([FromBody]");
             
-            #line 73 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 73 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -131,13 +131,13 @@ namespace Template.Controllers
                     "text.Session.GetString(\"TokenNo\");\r\n                \r\n                     SqlPa" +
                     "rameter[] parm2 = { \r\n\t\t\t\t\t     ");
             
-            #line 79 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 79 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
  foreach (var column in this.Columns) { 
             
             #line default
             #line hidden
             
-            #line 80 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 80 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
 
                if(!column.Exclude){
 			   
@@ -146,21 +146,21 @@ namespace Template.Controllers
             #line hidden
             this.Write("\t\t\t\tnew SqlParameter(\"@");
             
-            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
             this.Write("\", md.");
             
-            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 83 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
             this.Write("),\r\n\t\t\t\t\t\t");
             
-            #line 84 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 84 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
 
 						}
 					}
@@ -171,7 +171,7 @@ namespace Template.Controllers
             this.Write("                       \r\n                    };\r\n                    //string Res" +
                     "ponse = await ApiCall.ApiCallWithObject(\"");
             
-            #line 90 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 90 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -190,7 +190,7 @@ namespace Template.Controllers
         [HttpDelete]
 		public async Task<IActionResult> Delete([FromBody]");
             
-            #line 102 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 102 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
@@ -200,7 +200,7 @@ namespace Template.Controllers
                     "md.GUID)\r\n                    };\r\n\t\t\t\t\t//string Response = await ApiCall.ApiCall" +
                     "WithObject(\"");
             
-            #line 110 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\Templates\BackendControllerTemplate.tt"
+            #line 110 "D:\Projects\asp dotnet project\AspDotnet_FrontEnd_Template\FRONTEND_TEMPLATE\Templates\BackendControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.ControllerName));
             
             #line default
